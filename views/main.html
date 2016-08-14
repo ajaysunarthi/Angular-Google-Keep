@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="styles/main.css">
+
+<div class="bar">
+    <h3>Angular Keep</h3>
+    <button id="logout" ng-click="vm.logout()">logout</button></div>
+
+<div id="labelModel" ng-show="vm.labelmodel">
+    <div id="editLabel">
+        <div id="labelclose" ng-click="vm.labelClose()">×</div>
+        <h4>Edit labels</h4>
+        <div>
+            <span class="delete-tag"><i class="fa fa-plus"></i></span>
+            <input type="text" placeholder="Create new label" class="label-input" ng-model="vm.inputLabel" inputlabel-change>
+            <span class="span-right"><i class="" ng-click="vm.newLabel()"></i></span>
+        </div>
+        <div ng-repeat="label in vm.labels">
+            <span class="delete-tag"><i ng-click="vm.deleteLabel(label.id)" class="fa fa-tags"></i></span>
+            <input type="text" placeholder="enter label name" class="label-input" ng-model="label.name" label-change>
+            <span class="span-right"><i class="fa fa-pencil" ng-click="vm.editLabel(label.id,label.name)"></i></span>
+        </div>
+    </div>
+</div>
+
+<div class="left">
+    <p>Labels <span><a ng-click="vm.openLabelModal()">Edit</a></span></p>
+    <div class="label-list" ng-repeat="label in vm.labels">
+        {{label.name}}
+    </div>
+</div>
+
+<div class="right">
+    <div class="create-note">
+        <input type="text" contenteditable="true" placeholder="title"  ng-model="vm.name">
+        <input type="text" contenteditable="true" placeholder="take a note .."  ng-model="vm.body">
+        <button ng-click="vm.createNote()">create Note</button>
+    </div>
+    <div id="card_container">
+        <note-directive note="item" getNotes="vm.basic()" ng-repeat="item in vm.notes"></note-directive>
+    </div>
+</div>

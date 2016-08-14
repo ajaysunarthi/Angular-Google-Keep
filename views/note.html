@@ -1,0 +1,36 @@
+
+<div class="note" ng-class="vm.noteClass">
+    	<h4 contenteditable="true" editable ng-model="vm.note.name" ng-focus="vm.showDone = true" >{{note.name}}</h4>
+    	<p contenteditable="true" editable ng-model="vm.note.body" ng-focus="vm.showDone = true" >{{note.body}}</p>
+    	<div>
+    		<span class="label-span" ng-repeat="label in note.labels">{{label.name}}</span>
+    	</div>
+     	
+     	<div class="showLabelBox" ng-show="vm.showLabelBox">
+    		<p>Add Label</p>
+    		<input type="text" ng-model="vm.labelName">
+			<i class="fa fa-check" ng-click="vm.doneLabel(note.id)"></i>
+			<div ng-repeat="label in vm.labels | filter:vm.labelName">
+				<input type="checkbox" ng-model="bool" ng-checked="vm.checkbool(label.name,note.labels)" ng-change="vm.change(bool,note,label)"> {{label.name}}
+                
+			</div>
+
+    		<button ng-click="vm.labelClose()">Close</button>
+    	</div>
+
+        <div class="colorbox" ng-show="vm.noteColor">
+            <div class="close" ng-click="vm.closeColor()"><i class="fa fa-close"></i></div>
+            <div class="circle orange" ng-click="vm.changeClass('orange')"></div>
+            <div class="circle red" ng-click="vm.changeClass('red')"></div>
+            <div class="circle green" ng-click="vm.changeClass('green')"></div>
+            <div></div>
+            <div class="circle white" ng-click="vm.changeClass('white')"></div>
+            <div class="circle blue" ng-click="vm.changeClass('blue')"></div>
+            <div class="circle gray" ng-click="vm.changeClass('gray')"></div>
+        </div>
+
+    	<button ng-hide="vm.showLabelBox" ng-click="vm.addLabel()">add label</button>
+       <button ng-hide="vm.showLabelBox" ng-click="vm.deleteNote(note.id)">delete</button>
+       <button ng-hide="vm.showLabelBox" ng-click="vm.colorNote()">colors</button>
+       <i class="fa fa-check-circle" ng-show="vm.showDone" ng-click="vm.done(note.id)"></i>
+    </div>

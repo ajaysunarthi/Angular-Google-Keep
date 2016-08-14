@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="styles/login.css">
+<div class="wrapper" ng-cloak>
+	<div class="container">
+		<h1>Welcome</h1>
+    <form class="form" ng-submit="vm.submit()">
+			<input type="text" placeholder="Username" ng-model="vm.username">
+			<input type="password" placeholder="Password" ng-model="vm.password">
+			<button type="submit" id="login-button" >Login</button>
+		</form>
+		<h4>{{vm.error}}</h4>
+	</div>
+  <ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
